@@ -1,25 +1,33 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Fade } from 'react-reveal'
 
 const Section = (props) => {
     const { title, desc, leftBtnText, rightBtnText, imageBG } = props
   return (
     <Container backgroundImg={imageBG}>
-        <SectionTitle>
-            <h1>{title}</h1>
-            {
-                desc && <p>{desc}</p>
-            }
-        </SectionTitle>
-
+        <Fade bottom>
+            <SectionTitle>
+                <h1>{title}</h1>
+                {
+                    desc && <p>{desc}</p>
+                }
+            </SectionTitle>
+        </Fade> 
         <SectionButton>
             <Buttons>
-                <LeftButton>{leftBtnText}</LeftButton>
+                <Fade left>
+                    <LeftButton>{leftBtnText}</LeftButton>
+                </Fade>
+               
                 {
-                    rightBtnText && <RightButton>{rightBtnText}</RightButton>
+                    rightBtnText && (<Fade right><RightButton>{rightBtnText}</RightButton></Fade>)
                 }
             </Buttons>
-            <DownArrow src="/images/down-arrow.svg"/>
+            <Fade top>
+                <DownArrow src="/images/down-arrow.svg"/>
+            </Fade>
+            
         </SectionButton>
     </Container>
   )
